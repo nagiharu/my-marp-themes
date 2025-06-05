@@ -1,6 +1,6 @@
 /*   @theme red-theme */
    
-   @import "default";
+@import 'default';
    
    section {
      background: red !important;
