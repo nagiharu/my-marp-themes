@@ -1,0 +1,531 @@
+/* @theme dentsu-custom */
+
+@import 'default';
+
+/*
+ * Dentsu Custom Theme for Marp (Refactored for `default` theme)
+ * Based on PowerPoint theme: Uranus - Contents
+ */
+
+/* ==========================================================================
+   1. ROOT VARIABLES (COLOR PALETTE & FONTS)
+   ========================================================================== */
+:root {
+  /* Color Palette (from PowerPoint Theme) */
+  --color-primary: #4FC3E9;      /* accent1 - Main Blue */
+  --color-primary-light: #AAE5F8; /* accent2 - Light Blue */
+  --color-secondary: #FFA126;     /* accent3 - Orange */
+  --color-secondary-light: #FFE7AC; /* accent4 - Light Orange */
+  --color-accent: #C81E1E;       /* accent5 - Red */
+  --color-accent-light: #FE7373; /* accent6 - Light Red */
+  --color-dark: #646464;         /* dk1 - Dark Gray for text */
+  --color-black: #000000;        /* dk2 - Black */
+  --color-white: #FFFFFF;        /* lt1 - White */
+  --color-bg-light: #FFFAF3;    /* lt2 - Light Cream for backgrounds */
+  --color-link: #0563C1;         /* hlink - Links */
+  --color-visited: #954F72;      /* folHlink - Visited Links */
+
+  /* Base Font Settings */
+  --font-family-sans-serif: "Yu Gothic Medium", "游ゴシック Medium", "Yu Gothic", "游ゴシック", sans-serif;
+  --font-family-monospace: "Consolas", "Monaco", monospace;
+  --base-font-size: 28px;
+  --base-line-height: 1.4;
+}
+
+/* ==========================================================================
+   2. GLOBAL STYLES (APPLIES TO ALL SLIDES - `section` TAG)
+   ========================================================================== */
+section {
+  font-family: var(--font-family-sans-serif);
+  font-size: var(--base-font-size);
+  line-height: var(--base-line-height);
+  color: var(--color-dark);
+  background: var(--color-bg-light);
+  padding: 60px;
+  position: relative; 
+  box-sizing: border-box;
+  text-align: left; /* Default theme might center text */
+}
+
+/* Default Section Header (using data-section-title attribute) - NOT USED with default theme structure, use .section-title-body div instead */
+/* section::before { ... } */
+
+/* ==========================================================================
+   3. BASE ELEMENT TYPOGRAPHY (h1-h6, p, ul, ol, li, strong, a, code, pre, table)
+   ========================================================================== */
+section h1, section h2, section h3, section h4, section h5, section h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em; /* Basic spacing for headings */
+  font-family: var(--font-family-sans-serif);
+  color: var(--color-dark); /* Default heading color */
+  font-weight: 500;
+  text-align: left; /* Ensure headings are left-aligned by default */
+}
+
+section h1 {
+  font-size: 48px;
+  color: var(--color-primary);
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 4px solid var(--color-primary);
+}
+
+section h2 {
+  font-size: 36px;
+  color: var(--color-secondary);
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  border-left: 6px solid var(--color-secondary);
+}
+
+section h3 {
+  font-size: 32px;
+  color: var(--color-primary);
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+section h4 { font-size: 28px; }
+section h5 { font-size: 24px; }
+section h6 { font-size: 20px; }
+
+section p {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+section ul, section ol {
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding-left: 1.5em; 
+}
+
+section li {
+  margin-bottom: 8px;
+}
+
+section ul > li::marker {
+  color: var(--color-primary);
+}
+
+section strong {
+  /* For training material, use primary color for emphasis */
+  /* color: var(--color-accent); */ 
+  font-weight: bold; /* default theme might not make it bold enough */
+  color: var(--color-primary);
+}
+
+section a {
+  color: var(--color-link);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-link);
+}
+section a:visited {
+  color: var(--color-visited);
+  border-bottom-color: var(--color-visited);
+}
+section a:hover {
+  opacity: 0.8;
+}
+
+section pre, section code {
+  font-family: var(--font-family-monospace);
+}
+section code {
+  background: var(--color-primary-light); 
+  color: var(--color-dark);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+section pre {
+  background: var(--color-white); 
+  border: 1px solid var(--color-primary-light);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  overflow-x: auto;
+  font-size: 0.85em; 
+}
+section pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+section table {
+  display: table !important; 
+  width: 80% !important; 
+  border-collapse: collapse !important;
+  margin: 25px auto !important; /* Use shorthand margin with !important */
+  /* margin-left: auto !important; */  /* Covered by shorthand */
+  /* margin-right: auto !important; */ /* Covered by shorthand */
+  /* margin-top: 25px !important; */   /* Covered by shorthand */
+  /* margin-bottom: 25px !important; */ /* Covered by shorthand */
+}
+section th {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 15px;
+  text-align: center;
+  font-weight: 500;
+  border: 1px solid var(--color-primary);
+}
+section td {
+  padding: 12px 15px;
+  border: 1px solid var(--color-primary-light);
+}
+section tr:nth-child(even) td {
+  background: var(--color-white); 
+}
+
+section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: block; 
+  margin: 1em auto; 
+}
+
+/* ==========================================================================
+   4. SLIDE TYPE SPECIFIC STYLES (Cover, Divider, Content)
+   ========================================================================== */
+
+/* -------------------- 4.1 COVER SLIDE (`.cover`) -------------------- */
+section.cover {
+  display: grid !important; /* Override default theme display if any */
+  grid-template-columns: 60% 40% !important;
+  grid-template-rows: 1fr auto !important; /* Content and Date Footer area */
+  padding: 0 !important;
+  background-color: var(--color-bg-light) !important; /* Right side background */
+}
+section.cover::before { /* Left part - Blue background */
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important; left: 0 !important;
+  width: 60% !important; height: 100% !important;
+  background-color: var(--color-primary) !important;
+  z-index: 0 !important;
+}
+
+.cover-content { 
+  grid-column: 1 / 2 !important; grid-row: 1 / 2 !important;
+  padding: 60px !important;
+  color: var(--color-white) !important;
+  display: flex !important; flex-direction: column !important; justify-content: center !important;
+  position: relative !important; 
+  z-index: 1 !important;
+  text-align: left !important;
+}
+section.cover h1 {
+  font-size: 60px !important; font-weight: 500 !important;
+  color: var(--color-white) !important;
+  border: none !important; margin-bottom: 20px !important; text-shadow: none !important;
+  padding: 0 !important;
+  background: none !important;
+}
+section.cover .subtitle {
+  font-size: 36px !important; color: var(--color-white) !important;
+  margin-bottom: 30px !important; opacity: 0.9 !important; font-weight: 400 !important;
+}
+section.cover .date-footer {
+  font-size: 20px !important; color: var(--color-white) !important;
+  opacity: 0.8 !important; margin-top: auto !important; 
+  position: relative !important; padding-bottom: 20px !important;
+  width: fit-content !important; /* Prevent full width */
+}
+section.cover .date-footer::after { 
+  content: '' !important; position: absolute !important;
+  bottom: 0 !important; left: 0 !important; /* Align with text */
+  width: 100% !important; height: 4px !important; background-color: var(--color-white) !important;
+}
+
+/* -------------------- 4.2 DIVIDER SLIDE (`.divider`) -------------------- */
+section.divider {
+  background: linear-gradient(to bottom right, var(--color-white) 0%, #E0E0E0 100%) !important;
+  color: var(--color-dark) !important;
+  display: flex !important; flex-direction: column !important; 
+  justify-content: center !important; align-items: center !important;
+  text-align: center !important;
+  padding: 60px !important;
+}
+section.divider::before { content: none !important; display: none !important; } /* Hide any ::before from global section */
+section.divider .section-title-body { display: none !important; }
+
+section.divider h1 {
+  font-size: 48px !important; font-weight: 500 !important;
+  color: var(--color-primary) !important;
+  border: 4px solid var(--color-primary) !important;
+  padding: 25px 50px !important;
+  margin: 0 !important; 
+  background: none !important; 
+  text-shadow: none !important;
+}
+
+/* -------------------- 4.3 CONTENT SLIDE (`.content`) -------------------- */
+section.content {
+  padding-top: 130px !important; 
+  padding-bottom: 80px !important; 
+  text-align: left !important;
+}
+/* Top gradient line for content slides */
+section.content::before {
+  content: "" !important; position: absolute !important;
+  top: 0 !important; left: 0 !important; width: 100% !important; height: 8px !important;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-secondary) 100%) !important;
+  opacity: 1 !important; 
+  z-index: 1 !important;
+}
+
+/* H1 for Content Slides */
+section.content > h1 {
+  display: block !important; 
+  position: absolute !important;
+  top: 70px !important;
+  left: 60px !important;
+  width: calc(100% - 120px) !important;
+  color: var(--color-primary) !important;
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 40px !important;
+  font-weight: 500 !important; 
+  line-height: 1.2 !important;
+  text-align: left !important;
+  border: none !important; 
+  padding: 0 !important; 
+  margin: 0 !important; 
+  background: none !important;
+  text-shadow: none !important; 
+}
+section.content > h1::before {
+  content: "▍" !important;
+  display: inline-block !important;
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 1em !important; 
+  font-weight: 600 !important;
+  color: var(--color-primary) !important;
+  margin-right: 12px !important;
+  vertical-align: baseline !important; 
+  visibility: visible !important; 
+  opacity: 1 !important; 
+}
+
+/* H2 for Content Slides */
+section.content h2 {
+  display: block !important; 
+  position: static !important; 
+  max-width: 90% !important; 
+  color: var(--color-dark) !important;
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 28px !important;
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
+  text-align: center !important;
+  margin: 40px auto 20px auto !important;
+  padding: 10px 0 !important; 
+  border: none !important;
+  background: none !important;
+  text-shadow: none !important;
+}
+section.content h2::before { content: none !important; }
+
+/* H3 for Content Slides */
+section.content h3 {
+  display: block !important; 
+  position: static !important;
+  color: var(--color-primary) !important;
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 32px !important; 
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
+  text-align: left !important; 
+  margin: 30px 0 15px 0 !important; 
+  padding: 0 !important;
+  border: none !important;
+  background: none !important;
+  text-shadow: none !important;
+}
+
+section.content ul, section.content ol {
+  margin: 0 0 15px 0 !important; 
+  padding-left: 2em !important; 
+}
+section.content ul > li {
+  padding-left: 10px !important; 
+}
+section.content ul > li::marker {
+  font-size: 1.2em !important; 
+  color: var(--color-primary) !important; 
+}
+section.content strong {
+  color: var(--color-primary) !important; 
+  font-weight: bold !important;
+}
+
+/* ==========================================================================
+   5. COMPONENT STYLES (Highlight Box, Info Box, Warning Box, Columns etc.)
+   ========================================================================== */
+.highlight-box {
+  background: var(--color-primary-light) !important;
+  border-left: 6px solid var(--color-primary) !important;
+  padding: 20px 30px !important;
+  margin: 30px 0 !important;
+  border-radius: 0 8px 8px 0 !important; 
+}
+.highlight-box p:last-child { margin-bottom: 0 !important; }
+.highlight-box strong { 
+  color: inherit !important;
+  font-weight: bold !important;
+}
+
+.info-box {
+  background: var(--color-primary-light) !important; 
+  color: var(--color-dark) !important;
+  padding: 25px !important;
+  border-radius: 10px !important;
+  margin: 25px 0 !important;
+}
+.info-box p:last-child { margin-bottom: 0 !important; }
+.info-box strong { 
+  color: inherit !important;
+  font-weight: bold !important;
+}
+
+.warning-box {
+  background: var(--color-secondary-light) !important;
+  border-left: 6px solid var(--color-secondary) !important; /* Template used secondary, not accent red */
+  color: var(--color-dark) !important;
+  padding: 25px !important;
+  border-radius: 10px !important;
+  margin: 25px 0 !important;
+}
+.warning-box p:last-child { margin-bottom: 0 !important; }
+.warning-box strong { 
+  color: inherit !important;
+  font-weight: bold !important;
+}
+
+.custom-aside {
+  background-color: #f0f8ff !important; 
+  border-left: 5px solid var(--color-primary) !important;
+  padding: 1em 1.5em !important;
+  margin: 1.5em 0 !important;
+  font-size: 0.9em !important;
+  border-radius: 4px !important;
+}
+.custom-aside p { margin: 0.5em 0 !important; }
+.custom-aside p:last-child { margin-bottom: 0 !important; }
+.custom-aside strong { color: var(--color-primary) !important; }
+
+.columns-container {
+  display: flex !important;
+  gap: 30px !important;
+  align-items: flex-start !important; 
+  width: 100% !important;
+}
+.column {
+  flex: 1 !important; 
+  min-width: 0 !important; 
+}
+section.two-column-image-left .columns-container > .column-image,
+section.two-column-image-left-30 .columns-container > .column-image-30 {
+  height: 350px !important;
+  overflow: hidden !important;
+}
+section.two-column-image-left .columns-container > .column-image { flex: 0 0 48% !important; }
+section.two-column-image-left-30 .columns-container > .column-image-30 { flex: 0 0 30% !important; }
+section.two-column-image-left .columns-container > .column-text,
+section.two-column-image-left-30 .columns-container > .column-text-70 { flex: 1 !important; }
+
+.column-image img, .column-image-30 img {
+  width: 100% !important; height: 100% !important;
+  object-fit: cover !important;
+  margin: 0 !important; 
+  border-radius: 0 !important; 
+}
+section.three-column .column h2 {
+  text-align: left !important; 
+  font-size: 24px !important; 
+  margin:0 0 10px 0 !important;
+  border: none !important;
+}
+section.three-column .column p { text-align: left !important; }
+
+section .mermaid { margin: 20px auto !important; text-align: center !important; }
+section .mermaid svg { max-width: 100% !important; height: auto !important; }
+
+/* ==========================================================================
+   6. FOOTER AND PAGINATION
+   ========================================================================== */
+footer {
+  position: absolute !important;
+  bottom: 14.5px !important; /* Corrected: Align with page number's perceived baseline */
+  left: 60px !important; /* Corrected: Align with padding */
+  right: 60px !important; /* Corrected: Align with padding */
+  font-size: 14px !important;
+  color: var(--color-dark) !important;
+  opacity: 0.7 !important;
+  text-align: center !important; 
+  box-sizing: border-box !important;
+  z-index: 10 !important; 
+  background: none !important; /* Ensure no background from default theme */
+}
+
+/* Page number styling using CSS instead of SVG */
+section::after {
+  content: attr(data-marpit-pagination) !important;
+  position: absolute !important;
+  bottom: 14.5px !important;
+  right: 60px !important;
+  font-family: var(--font-family-sans-serif) !important;
+  font-size: 14px !important;
+  color: var(--color-dark) !important;
+  opacity: 0.7 !important;
+  z-index: 10 !important;
+}
+
+/* Hide the default SVG page number */
+section > svg[data-marpit-svg="page-number"] {
+  display: none !important;
+}
+
+/* Gradient line above footer ON CONTENT SLIDES ONLY */
+section.content > footer {
+    position: relative; /* Needed for z-index stacking of ::after */
+}
+section.content > footer::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: 25px !important; /* Positioned above the footer text */
+  left: -60px !important; /* Relative to footer's padding, so go back to edge */
+  right: -60px !important; /* Relative to footer's padding, so go back to edge */
+  width: auto !important; /* Let left/right define width */
+  height: 4px !important;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-secondary) 100%) !important;
+  z-index: -1 !important; /* Behind footer text */
+}
+
+section.cover footer, section.cover::after,
+section.divider footer, section.divider::after {
+  display: none !important;
+}
+
+/* ==========================================================================
+   7. UTILITY STYLES (e.g. .section-title-body if used in Markdown)
+   ========================================================================== */
+.section-title-body {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  color: var(--color-dark) !important;
+  text-align: left !important;
+  position: absolute !important;
+  top: 40px !important;
+  left: 60px !important;
+  width: calc(100% - 120px) !important;
+  opacity: 1 !important; 
+  z-index: 5 !important; 
+  background: none !important;
+}
